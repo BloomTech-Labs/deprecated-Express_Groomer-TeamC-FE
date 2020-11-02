@@ -1,24 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
 
-const FormInput = props => {
+// The following component is an example of your existing Input Component
+const Input = ({ label, register, required }) => (
+  <>
+    <label>{label}</label>
+    <input name={label} ref={register({ required })} />
+  </>
+);
+
+// you can use React.forwardRef to pass the ref too
+const Select = React.forwardRef(({ label }, ref) => (
+  <>
+    <label>{label}</label>
+    <select name={label} ref={ref}>
+      <option value="20">20</option>
+      <option value="30">30</option>
+    </select>
+  </>
+));
+
+export default function App() {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => console.log(data);
+
   return (
-    <>
-      <label htmlFor={props.labelId}>{props.labelId}</label>
-      <input
-        type="text"
-        id={props.labelId}
-        name={props.name}
-        placeholder={props.placeholder}
-      />
-    </>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Input label="First Name" register={register} required />
+      <Select label="Age" ref={register} />
+      <input type="submit" />
+    </form>
   );
-};
-
-export default FormInput;
-
-FormInput.propTypes = {
-  placeholder: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  labelId: PropTypes.string.isRequired,
-};
+}
