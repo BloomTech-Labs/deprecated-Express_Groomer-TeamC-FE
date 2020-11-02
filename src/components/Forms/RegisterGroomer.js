@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
+// delete this comment
+
 export default function RegisterGroomer() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => console.log(data);

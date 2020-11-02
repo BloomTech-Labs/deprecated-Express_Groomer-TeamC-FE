@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -8,7 +9,7 @@ import {
 } from 'react-router-dom';
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import 'antd/dist/antd.less';
-import { NotFoundPage } from './components/pages/NotFound';
+// import { NotFoundPage } from './components/pages/NotFound';
 import { ExampleListPage } from './components/pages/ExampleList';
 import { HomePage } from './components/pages/Home';
 import { ProfileListPage } from './components/pages/ProfileList';
@@ -21,10 +22,9 @@ import Register from './components/Forms/Register';
 import RegisterGroomer from './components/Forms/RegisterGroomer';
 import CustomerGroomer from './components/Forms/RegisterCustomer';
 
-import { CustomerDashboard } from './components/pages/CustomerDashboard';
-import { GroomerDashboard } from './components/pages/GroomerDashboard';
-import { SearchForm } from './components/pages/search';
-
+// import { CustomerDashboard } from './components/pages/CustomerDashboard';
+// import { GroomerDashboard } from './components/pages/GroomerDashboard';
+// import { SearchForm } from './components/pages/search';
 
 ReactDOM.render(
   <Router>
@@ -70,6 +70,5 @@ function App() {
         </Switch>
       </Security>
     </div>
-
   );
 }
