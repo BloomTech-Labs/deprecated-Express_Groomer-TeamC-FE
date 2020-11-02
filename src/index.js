@@ -20,8 +20,8 @@ import { LoadingComponent } from './components/common';
 // new imports
 import Navbar from './components/Layouts/Navbar';
 import Register from './components/Forms/Register';
-import RegisterGroomer from './components/Forms/Register-Groomer';
-import CustomerGroomer from './components/Forms/Register-Customer';
+import RegisterGroomer from './components/Forms/RegisterGroomer';
+import CustomerGroomer from './components/Forms/RegisterCustomer';
 
 ReactDOM.render(
   <Router>
