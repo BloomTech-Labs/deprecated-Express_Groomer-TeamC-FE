@@ -23,13 +23,18 @@ describe('<List /> test suite', () => {
         <List
           // return an unresolved promise to test initial component state
           getItemsData={jest.fn(() => new Promise(() => {}))}
-          LoadingComponent={() => <div>Loading...</div>}
+          LoadingComponent={() => (
+            <div>you need to register before you can view dashboard</div>
+          )}
           RenderItems={RenderItems}
         />
       );
     });
 
-    expect(rendered.getByText('Loading...').textContent).toBe('Loading...');
+    expect(
+      rendered.getByText('you need to register before you can view dashboard')
+        .textContent
+    ).toBe('you need to register before you can view dashboard');
   });
   test('renders item data', async () => {
     let rendered;
@@ -38,7 +43,9 @@ describe('<List /> test suite', () => {
       rendered = await render(
         <List
           getItemsData={getItemsData}
-          LoadingComponent={() => <div>Loading...</div>}
+          LoadingComponent={() => (
+            <div>you need to register before you can view dashboard</div>
+          )}
           RenderItems={RenderItems}
         />
       );

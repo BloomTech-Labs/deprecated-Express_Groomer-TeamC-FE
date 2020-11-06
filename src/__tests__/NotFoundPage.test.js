@@ -11,6 +11,8 @@ describe('Loading Common Component', () => {
       </Router>
     );
     const h1 = getByText(/404 page not found/i);
+    const button = getByText(/Back To Home/i);
     expect(h1.textContent).toBe('404 Page Not Found');
+    expect(button.textContent).toBe('Back To Home');
   });
 });

@@ -8,7 +8,11 @@ describe('<FormButton /> test suite', () => {
     // for this first assertion, we'll simply ensure that the button's text is determined by the props passed to it
     // we'll also ensure that the className defaults to primary where none is passed as props
     const { getByText, rerender } = render(
-      <FormButton buttonText="Click Here" />
+      <FormButton
+        buttonText="Click Here"
+        isDisabled={false}
+        classType="primary"
+      />
     );
     const button = getByText(/click here/i);
     expect(button.textContent).toBe('Click Here');

@@ -23,6 +23,7 @@ import CustomerRegistration from './components/pages/CustomerRegistration/Custom
 import CustomerDashboard from './components/pages/CustomerDashboard/CustomerDashboardContainer';
 import GroomerDashboard from './components/pages/GroomerDashboard/GroomerDashboardContainer';
 import { SearchForm } from './components/pages/search';
+import MyMap from './components/MyMap/MyMap.js';
 
 ReactDOM.render(
   <Router>
