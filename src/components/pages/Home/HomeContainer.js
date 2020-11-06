@@ -13,10 +13,10 @@ function HomeContainer({ LoadingComponent }) {
 
   const [oktaIds, setOktaIds] = useState([]);
 
-  getUserData().then(response => {
-    const oktaUserIds = response.filter(user => user.oktaId);
-    setOktaIds(...oktaUserIds);
-  });
+  // getUserData().then(response => {
+  //   const oktaUserIds = response.filter(user => user.oktaId);
+  //   setOktaIds(...oktaUserIds);
+  // });
 
   useEffect(() => {
     let isSubscribed = true;
