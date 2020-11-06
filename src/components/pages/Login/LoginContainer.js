@@ -47,11 +47,7 @@ const LoginContainer = props => {
     );
   }, []);
 
-  return (
-    <>
-      <div id="sign-in-widget" />
-    </>
-  );
+  return <div id="sign-in-widget" />;
 };
 
 export default LoginContainer;
