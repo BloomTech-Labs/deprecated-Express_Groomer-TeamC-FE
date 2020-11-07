@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import './CustomerRegistration.css';
 
-export default function RegisterCustomer() {
+function RegisterCustomer() {
   const defaultUser = {
     name: '',
     lastname: '',
@@ -56,13 +57,12 @@ export default function RegisterCustomer() {
     //   change user.state based on whats coming in input
 
     <div className="registration-container">
-      <h1>User Registration</h1>
-      {/* To test functionality */}
-      <p>First name is: {user.name}</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="name">Name</label>
+      <h1>Customer Registration</h1>
 
-        {/* use aria-invalid to indicate field contain error */}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="name">Name: </label>
+
+        {/* use aria-invalid to indicate field contain error for screen reader users*/}
         <input
           type="text"
           id="name"
@@ -81,6 +81,7 @@ export default function RegisterCustomer() {
           <span role="alert">Max length exceeded</span>
         )}
 
+        <label htmlFor="lastname">Last Name: </label>
         <input
           type="text"
           id="lastname"
@@ -98,6 +99,8 @@ export default function RegisterCustomer() {
         {errors.lastname && errors.lastname.type === 'maxLength' && (
           <span role="alert">Max length exceeded</span>
         )}
+
+        <label htmlFor="email">Email: </label>
 
         <input
           type="email"
@@ -117,6 +120,8 @@ export default function RegisterCustomer() {
           <span role="alert">Max length exceeded</span>
         )}
 
+        <label htmlFor="phone">Phone: </label>
+
         <input
           type="text"
           id="phone"
@@ -134,6 +139,8 @@ export default function RegisterCustomer() {
         {errors.phone && errors.phone.type === 'maxLength' && (
           <span role="alert">Max length exceeded</span>
         )}
+
+        <label htmlFor="address">Address: </label>
 
         <input
           type="text"
@@ -153,6 +160,8 @@ export default function RegisterCustomer() {
           <span role="alert">Max length exceeded</span>
         )}
 
+        <label htmlFor="city">City: </label>
+
         <input
           type="text"
           id="city"
@@ -170,6 +179,8 @@ export default function RegisterCustomer() {
         {errors.city && errors.city.type === 'maxLength' && (
           <span role="alert">Max length exceeded</span>
         )}
+
+        <label htmlFor="state">State: </label>
 
         <input
           type="text"
@@ -189,6 +200,8 @@ export default function RegisterCustomer() {
           <span role="alert">Max length exceeded</span>
         )}
 
+        <label htmlFor="zipcode">Zipcode: </label>
+
         <input
           type="text"
           id="zipcode"
@@ -207,6 +220,8 @@ export default function RegisterCustomer() {
           <span role="alert">Max length exceeded</span>
         )}
 
+        <label htmlFor="description">Description: </label>
+
         <input
           type="text"
           id="description"
@@ -224,6 +239,7 @@ export default function RegisterCustomer() {
         {errors.description && errors.description.type === 'maxLength' && (
           <span role="alert">Max length exceeded</span>
         )}
+        <label htmlFor="photoUrl">Photo URL: </label>
 
         <input
           type="text"
@@ -243,8 +259,10 @@ export default function RegisterCustomer() {
           <span role="alert">Max length exceeded</span>
         )}
 
-        <input type="submit" />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
 }
+
+export default RegisterCustomer;

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,uBAAuB,CAAC;EAEpB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CAgBzB;;AAnBD,AAKI,uBALmB,CAKnB,IAAI,CAAA;EACA,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,KAAK;CAQf;;AAjBL,AAYQ,uBAZe,CAKnB,IAAI,CAOA,KAAK,CAAE;EACH,MAAM,EAAE,YAAY;CAEvB",
+    "sources": [
+        "CustomerRegistration.scss"
+    ],
+    "names": [],
+    "file": "CustomerRegistration.css"
+}

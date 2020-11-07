@@ -1,0 +1,21 @@
+
+.registration-container {
+
+    display: flex;
+    flex-direction: column;
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 20rem;
+
+
+        input  {
+            margin: 0 0 0.6rem 0;
+
+        }
+
+    }
+
+}
