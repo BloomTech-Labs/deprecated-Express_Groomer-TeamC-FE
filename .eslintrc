@@ -13,7 +13,11 @@
     // ...
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-    "semi": "error"
+    "semi": "error",
+    "import/no-unresolved": 0,
+    "react/jsx-no-target-blank": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/jsx-no-comment-textnodes": 0  
   },
   "extends": "react-app"
 }

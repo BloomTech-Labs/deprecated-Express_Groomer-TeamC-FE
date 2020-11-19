@@ -5,12 +5,16 @@ import {
   REGISTER_GROOMER_INFO_START,
   REGISTER_GROOMER_INFO_SUCCESS,
   REGISTER_GROOMER_INFO_FAILURE,
+  UPDATE_GROOMER_START,
+  UPDATE_GROOMER_SUCCESS,
+  UPDATE_GROOMER_FAILURE,
 } from '../../../api/types';
 
 const initialState = {
   groomer: {},
   isFetching: false,
   error: '',
+  status: '',
 };
 
 export const groomerReducer = (state = initialState, action) => {
@@ -48,6 +52,25 @@ export const groomerReducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         error: action.payload,
+      };
+    case UPDATE_GROOMER_START:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case UPDATE_GROOMER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        groomer: action.payload,
+        status: 'success',
+      };
+    case UPDATE_GROOMER_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload,
+        status: 'failure',
       };
     default:
       return state;

@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RenderCustomerProfile } from './RenderCustomerProfile';
+import { connect } from 'react-redux';
+import { getCustomerInfo } from '../../../api/index';
+import { updateCustomer } from '../../../api/index';
 
-const CustomerProfileContainer = () => {
+const CustomerProfileContainer = props => {
   const [contactModalVisible, setContactModalVisible] = useState(false);
   const [profileModalVisible, setProfileModalVisible] = useState(false);
-  const dummyData = {
-    name: 'Tony',
-    description:
-      'Deleniti dolorem nam. Dolores libero omnis consequatur minus illo. Cum soluta tempore quod nemo placeat ratione saepe. Sit labore reprehenderit et laborum cumque corrupti.',
-    lastname: 'Lang',
-    address: '806 Price Mount',
-    zip: '13349',
-    phone: '2649864723',
-    email: 'Norene45@gmail.com',
-    city: 'Port April',
-    state: 'Texas',
-    country: 'USA',
-    photo_url:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/nfedoroff/128.jpg',
+  const { getCustomerInfo } = props;
+  const customerId = localStorage.getItem('customerId');
+
+  useEffect(() => {
+    getCustomerInfo(customerId);
+  }, [getCustomerInfo, customerId]);
+
+  const updateProfile = data => {
+    props.updateCustomer(data, customerId);
   };
 
   const showContactModal = () => {
@@ -36,17 +34,37 @@ const CustomerProfileContainer = () => {
     setProfileModalVisible(false);
   };
 
-  return (
-    <RenderCustomerProfile
-      contactModalVisible={contactModalVisible}
-      showContactModal={showContactModal}
-      handleContactModalClose={handleContactModalClose}
-      profileModalVisible={profileModalVisible}
-      showProfileModal={showProfileModal}
-      handleProfileModalClose={handleProfileModalClose}
-      dummyData={dummyData}
-    />
-  );
+  if (props.customer && props.customer.hasOwnProperty('name')) {
+    return (
+      <RenderCustomerProfile
+        contactModalVisible={contactModalVisible}
+        showContactModal={showContactModal}
+        handleContactModalClose={handleContactModalClose}
+        profileModalVisible={profileModalVisible}
+        showProfileModal={showProfileModal}
+        handleProfileModalClose={handleProfileModalClose}
+        customer={props.customer}
+        updateProfile={updateProfile}
+        error={props.error}
+        status={props.status}
+      />
+    );
+  } else if (props.isFetching === true) {
+    return <div>Loading</div>;
+  } else {
+    return <div>There was a problem loading this page</div>;
+  }
 };
 
-export default CustomerProfileContainer;
+const mapStateToProps = state => {
+  return {
+    customer: state.customerReducer.customer,
+    isFetching: state.customerReducer.isFetching,
+    error: state.customerReducer.error,
+    status: state.customerReducer.status,
+  };
+};
+
+export default connect(mapStateToProps, { getCustomerInfo, updateCustomer })(
+  CustomerProfileContainer
+);

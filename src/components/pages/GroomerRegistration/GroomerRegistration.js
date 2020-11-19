@@ -164,7 +164,7 @@ const GroomerRegistration = props => {
           <span role="alert">Max length exceeded</span>
         )}
 
-        <label htmlFor="state">Country: </label>
+        <label htmlFor="country">Country: </label>
         <input
           type="text"
           id="country"
@@ -210,7 +210,7 @@ const GroomerRegistration = props => {
           placeholder="description"
           onChange={handleInputChange}
           aria-invalid={errors.description ? 'true' : 'false'}
-          ref={register({ required: true, maxLength: 30 })}
+          ref={register({ required: true, maxLength: 300 })}
         />
 
         {/* use role="alert" to announce the error message */}
@@ -229,13 +229,10 @@ const GroomerRegistration = props => {
           placeholder="Photo URL"
           onChange={handleInputChange}
           aria-invalid={errors.zipcode ? 'true' : 'false'}
-          ref={register({ required: true, maxLength: 100 })}
+          ref={register({ required: false, maxLength: 300 })}
         />
 
         {/* use role="alert" to announce the error message */}
-        {errors.photoUrl && errors.photoUrl.type === 'required' && (
-          <span role="alert">This is required</span>
-        )}
         {errors.photoUrl && errors.photoUrl.type === 'maxLength' && (
           <span role="alert">Max length exceeded</span>
         )}

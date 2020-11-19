@@ -29,7 +29,7 @@ import GroomerDashboard from './components/pages/GroomerDashboard/GroomerDashboa
 import MyMap from './components/MyMap/MyMap';
 import { SearchForm } from './components/pages/search';
 import GroomerDisplay from './components/pages/ProfileDisplay/GroomerDisplay';
-
+import Home from './components/Home';
 import './styles/UserProfile.css';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -61,6 +61,7 @@ function App() {
       <Security {...config} onAuthRequired={authHandler}>
         <Switch>
           <Route path="/login" component={LoginPage} />
+          <Route path="/home" component={Home} />
           <Route path="/SearchForm" component={SearchForm} />
           <Route path="/implicit/callback" component={LoginCallback} />
           {/* any of the routes you need secured should be registered as SecureRoutes */}

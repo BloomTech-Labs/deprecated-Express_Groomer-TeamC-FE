@@ -15,6 +15,12 @@ import {
   GET_USER_INFO_START,
   GET_USER_INFO_SUCCESS,
   GET_USER_INFO_FAILURE,
+  UPDATE_CUSTOMER_START,
+  UPDATE_CUSTOMER_SUCCESS,
+  UPDATE_CUSTOMER_FAILURE,
+  UPDATE_GROOMER_START,
+  UPDATE_GROOMER_SUCCESS,
+  UPDATE_GROOMER_FAILURE,
 } from './types';
 
 let groomersReq = `${process.env.REACT_APP_API_URI}/groomers`;
@@ -115,7 +121,7 @@ const getCustomerInfo = id => dispatch => {
   axios
     .get(`${process.env.REACT_APP_API_URI}/customers/${id}`)
     .then(res => {
-      dispatch({ type: GET_CUSTOMER_INFO_SUCCESS, payload: res.body });
+      dispatch({ type: GET_CUSTOMER_INFO_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: GET_CUSTOMER_INFO_FAILURE, payload: err.message });
@@ -123,13 +129,11 @@ const getCustomerInfo = id => dispatch => {
 };
 
 const getGroomerInfo = id => dispatch => {
-  console.log('get ran');
   dispatch({ type: GET_GROOMER_INFO_START });
 
   axios
     .get(`${process.env.REACT_APP_API_URI}/groomers/${id}`)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: GET_GROOMER_INFO_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -143,7 +147,8 @@ const registerCustomer = (data, props) => dispatch => {
   axios
     .post(`${process.env.REACT_APP_API_URI}/customers`, data)
     .then(res => {
-      dispatch({ type: REGISTER_CUSTOMER_INFO_SUCCESS, payload: res.body });
+      localStorage.setItem('customerId', res.data.id);
+      dispatch({ type: REGISTER_CUSTOMER_INFO_SUCCESS, payload: res.data });
       props.history.push('/customer-dashboard');
     })
     .catch(err => {
@@ -157,11 +162,38 @@ const registerGroomer = (data, props) => dispatch => {
   axios
     .post(`${process.env.REACT_APP_API_URI}/groomers`, data)
     .then(res => {
+      localStorage.setItem('groomerId', res.data.id);
       dispatch({ type: REGISTER_GROOMER_INFO_SUCCESS, payload: res.data });
       props.history.push('/groomer-dashboard');
     })
     .catch(err => {
       dispatch({ type: REGISTER_GROOMER_INFO_FAILURE, payload: err.message });
+    });
+};
+
+const updateGroomer = (data, id) => dispatch => {
+  dispatch({ type: UPDATE_GROOMER_START });
+
+  axios
+    .put(`${process.env.REACT_APP_API_URI}/groomers/${id}`, data)
+    .then(res => {
+      dispatch({ type: UPDATE_GROOMER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_GROOMER_FAILURE, payload: err.message });
+    });
+};
+
+const updateCustomer = (data, id) => dispatch => {
+  dispatch({ type: UPDATE_CUSTOMER_START });
+
+  axios
+    .put(`${process.env.REACT_APP_API_URI}/customers/${id}`, data)
+    .then(res => {
+      dispatch({ type: UPDATE_CUSTOMER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_CUSTOMER_FAILURE, payload: err.message });
     });
 };
 
@@ -176,4 +208,6 @@ export {
   getUserData,
   registerCustomer,
   registerGroomer,
+  updateCustomer,
+  updateGroomer,
 };
