@@ -32,7 +32,7 @@ const CustomerRegistration = props => {
     //   getting name of input and value
     setUser({
       ...user,
-      // seting key to key-value pair
+      // setting key to key-value pair
       [event.target.name]: event.target.value,
     });
   };
