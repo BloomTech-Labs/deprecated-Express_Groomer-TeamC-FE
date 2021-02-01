@@ -65,6 +65,7 @@ const StyledH1 = styled.h1`
 `;
 
 const Registration = props => {
+  console.log(props);
   return (
     <StyledDiv>
       <StyledH1>Are you a...</StyledH1>
