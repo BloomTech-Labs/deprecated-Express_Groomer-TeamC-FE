@@ -31,6 +31,7 @@ import GroomerDisplay from './components/groomers/GroomerDisplay';
 import Home from './components/Home';
 import './styles/UserProfile.css';
 import CustomerDashboardContainer from './components/customers/CustomerDashboard/CustomerDashboardContainer';
+import ScheduleModal from './components/customers/CustomerSchedule/CustomerScheduleModal';
 //import pet component
 
 const store = createStore(
@@ -67,7 +68,7 @@ function App() {
       <Security {...config} onAuthRequired={authHandler}>
         <Switch>
           <Route path="/login" component={LoginPage} />
-          <Route path="/SearchForm" component={SearchForm} />
+          <Route path="/SearchForm" component={ScheduleModal} />
           <Route path="/implicit/callback" component={LoginCallback} />
           {/* any of the routes you need secured should be registered as SecureRoutes */}
           <Route
