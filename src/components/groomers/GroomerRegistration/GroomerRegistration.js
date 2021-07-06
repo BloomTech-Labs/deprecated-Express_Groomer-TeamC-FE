@@ -33,6 +33,7 @@ const StyledSubmit = styled.button`
 `;
 
 const GroomerRegistration = props => {
+  console.log('email', props.location.state.email);
   const defaultUser = {
     name: '',
     lastname: '',
@@ -64,6 +65,15 @@ const GroomerRegistration = props => {
     setUser({
       ...user,
       [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleCheckboxChange = event => {
+    event.preventDefault();
+
+    setUser({
+      ...user,
+      [event.target.name]: event.target.checked,
     });
   };
 
@@ -104,6 +114,7 @@ const GroomerRegistration = props => {
           id="email"
           name="email"
           placeholder="email"
+          value={props.location.state.email}
           onChange={handleInputChange}
           aria-invalid={errors.email ? 'true' : 'false'}
           ref={register({ required: true, maxLength: 30 })}
@@ -253,21 +264,21 @@ const GroomerRegistration = props => {
         <div>
           <StyledInput
             type="checkbox"
-            id="grooms_dogs"
-            name="grooms_dogs"
-            value="Dogs"
+            id="dogs"
+            name="dogs"
+            onChange={handleCheckboxChange}
           />
-          <label htmlFor="grooms_dogs"> Dogs </label>
+          <label htmlFor="dogs"> Dogs </label>
         </div>
 
         <div>
           <StyledInput
             type="checkbox"
-            id="grooms_cats"
-            name="grooms_cats"
-            value="Cats"
+            id="cats"
+            name="cats"
+            onChange={handleCheckboxChange}
           />
-          <label htmlFor="grooms_cats"> Cats </label>
+          <label htmlFor="cats"> Cats </label>
         </div>
 
         <StyledInput
